@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ngMadLibs</title>
+  <style>
+    [ng\:cloak],
+    [ng-cloak],
+    [data-ng-cloak],
+    [x-ng-cloak],
+    .ng-cloak,
+    .x-ng-cloak {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <header class="topheader">
+    <div class="topheader-inset">
+      <image class="topheader-illustration" src="images/mad-lib-happy-face.png"
+             alt="happy face">
+    </div>
+    <div class="topheader-content">
+      <img class="topheader-logo" src="images/ng-mad-libs-logo.png"
+           alt="ngMadLibs logo">
+      <h1 class="topheader-title">Automate This!</h1>
+    </div>
+  </header>
+  <main ng-app="ng-madlibs" ng-controller="madlibs" ng-cloak>
+    <form class="wordselect" ng-submit="$event.preventDefault()">
+      <h2>Provide the following words:</h2>
+      <div class="wordselect-column">
+        <input type="text" ng-model="female_name" placeholder="female name">
+        <input type="text" ng-model="job_title" placeholder="job title">
+        <input type="text" ng-model="tedious_task" placeholder="tedious task">
+      </div><!--
+   --><div class="wordselect-column">
+        <input type="text" ng-model="dirty_task" placeholder="dirty task">
+        <input type="text" ng-model="celebrity" placeholder="celebrity">
+        <input type="text" ng-model="useless_skill" placeholder="useless skill">
+      </div><!--
+   --><div class="wordselect-column">
+        <input type="text" ng-model="obnoxious_celebrity"
+               placeholder="obnoxious celebrity">
+        <input type="text" ng-model="huge_number" placeholder="huge number">
+        <input type="text" ng-model="adjective" placeholder="adjective">
+      </div>
+    </form>
+    <article class="madlibs">
+      <p>
+        <span class="madlib">{{ml('female_name')}}</span> was a
+        <span class="madlib">{{ml('job_title')}}</span> who loved technology.
+        Although she loved parts of her job, she absolutely hated
+        <span class="madlib">{{ml('tedious_task')}}</span> and
+        <span class="madlib">{{ml('dirty_task')}}</span>. So,
+        <span class="madlib">{{ml('female_name')}}</span> met with her life
+        mentor <span class="madlib">{{ml('celebrity')}}</span> who told her to
+        learn how to <span class="madlib">{{ml('useless_skill')}}</span> with
+        Thinkful. Thinkful didn't offer a course on
+        <span class="madlib">{{ml('useless_skill')}}</span>, so she studied
+        programming instead.
+      </p>
+      <p>
+        What a great decision! With her new skills,
+        <span class="madlib">{{ml('female_name')}}</span> built a(n)
+        <span class="madlib">{{ml('adjective')}}</span> robot named
+        <span class="madlib">{{ml('obnoxious_celebrity')}}</span> that not only
+        loved <span class="madlib">{{ml('dirty_task')}}</span> but did it
+        <span class="madlib">{{ml('huge_number') | number}}</span> times faster.
+      </p>
+    </article>
+  </main>
+  <script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
