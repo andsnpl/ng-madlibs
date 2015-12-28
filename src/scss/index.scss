@@ -43,6 +43,28 @@ body {
   font-size: 3rem;
 }
 
+.genderselect {
+  padding: 1rem 3rem;
+  border: 1px solid black;
+}
+
+.genderlist {
+  padding: 0;
+  width: 21rem;
+  margin: 0 auto;
+  list-style: none;
+}
+
+.genderoption {
+  display: inline-block;
+  width: 32%;
+  margin: 0 0.66%;
+
+  input {
+    margin: 0;
+  }
+}
+
 .wordselect {
   padding: 3rem;
   border: 1px solid black;

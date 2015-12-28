@@ -26,11 +26,32 @@
       <h1 class="topheader-title">Automate This!</h1>
     </div>
   </header>
-  <main ng-controller="madlibs">
+  <main id="madlibs" ng-controller="madlibs">
+    <form class="genderselect">
+      <h2>Should this story be about a man or a woman?</h2>
+      <ul class="genderlist">
+        <li class="genderoption">
+          <input type="radio" id="madlibs-gender-m" ng-model="gender"
+                 name="gender" value="M">
+          <label for="madlibs-gender-m">Man</label>
+        </li><!--
+     --><li class="genderoption">
+          <input type="radio" id="madlibs-gender-f" ng-model="gender"
+                 name="gender" value="F">
+          <label for="madlibs-gender-f">Woman</label>
+        </li><!--
+     --><li class="genderoption">
+          <input type="radio" id="madlibs-gender-o" ng-model="gender"
+                 name="gender" value="O">
+          <label for="madlibs-gender-o">No gender</label>
+        </li>
+      </ul>
+    </form>
     <form class="wordselect" ng-submit="$event.preventDefault()">
       <h2>Provide the following words:</h2>
       <div class="wordselect-column">
-        <input type="text" ng-model="female_name" placeholder="female name">
+        <input type="text" ng-model="this[nameKey(gender)]"
+               placeholder="{{spaceify(nameKey(gender))}}">
         <input type="text" ng-model="job_title" placeholder="job title">
         <input type="text" ng-model="tedious_task" placeholder="tedious task">
       </div><!--
@@ -48,21 +69,25 @@
     </form>
     <article class="madlibs">
       <p>
-        <span class="madlib">{{ml('female_name')}}</span> was a
+        <span class="madlib">{{ml(nameKey(gender))}}</span> was a
         <span class="madlib">{{ml('job_title')}}</span> who loved technology.
-        Although she loved parts of her job, she absolutely hated
+        Although {{pron_2s_subjective(gender)}} loved parts of
+        {{pron_2s_genetive(gender)}} job,
+        {{pron_2s_subjective(gender)}} absolutely hated
         <span class="madlib">{{ml('tedious_task')}}</span> and
         <span class="madlib">{{ml('dirty_task')}}</span>. So,
-        <span class="madlib">{{ml('female_name')}}</span> met with her life
-        mentor <span class="madlib">{{ml('celebrity')}}</span> who told her to
-        learn how to <span class="madlib">{{ml('useless_skill')}}</span> with
-        Thinkful. Thinkful didn't offer a course on
-        <span class="madlib">{{ml('useless_skill')}}</span>, so she studied
-        programming instead.
+        <span class="madlib">{{ml(nameKey(gender))}}</span> met with life
+        mentor, {{pron_2s_genetive(gender)}}
+        <span class="madlib">{{ml('celebrity')}}</span>,
+        who told {{pron_2s_objective(gender)}} to learn how to
+        <span class="madlib">{{ml('useless_skill')}}</span> with Thinkful.
+        Thinkful didn't offer a course on
+        <span class="madlib">{{ml('useless_skill')}}</span>, so
+        {{pron_2s_subjective(gender)}} studied programming instead.
       </p>
       <p>
-        What a great decision! With her new skills,
-        <span class="madlib">{{ml('female_name')}}</span> built a(n)
+        What a great decision! With {{pron_2s_genetive(gender)}} new skills,
+        <span class="madlib">{{ml(nameKey(gender))}}</span> built a(n)
         <span class="madlib">{{ml('adjective')}}</span> robot named
         <span class="madlib">{{ml('obnoxious_celebrity')}}</span> that not only
         loved <span class="madlib">{{ml('dirty_task')}}</span> but did it
