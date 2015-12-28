@@ -14,7 +14,7 @@
     }
   </style>
 </head>
-<body>
+<body ng-app="ng-madlibs" ng-cloak>
   <header class="topheader">
     <div class="topheader-inset">
       <image class="topheader-illustration" src="images/mad-lib-happy-face.png"
@@ -26,7 +26,7 @@
       <h1 class="topheader-title">Automate This!</h1>
     </div>
   </header>
-  <main ng-app="ng-madlibs" ng-controller="madlibs" ng-cloak>
+  <main ng-controller="madlibs">
     <form class="wordselect" ng-submit="$event.preventDefault()">
       <h2>Provide the following words:</h2>
       <div class="wordselect-column">
