@@ -6,14 +6,18 @@ angular.module('ng-madlibs')
   .controller('madlibs', [
     '$scope',
     function ($scope) {
-      $scope.gender = 'F';
+      $scope.prefs = {
+        gender: 'F'
+      };
+
+      $scope.blanks = {};
 
       $scope.spaceify = function (snakeCaseName) {
         return snakeCaseName.replace(/_/g, ' ');
       };
 
       $scope.ml = function (blankName) {
-        return this[blankName] || '{{' + this.spaceify(blankName) + '}}';
+        return this.blanks[blankName] || '{{' + this.spaceify(blankName) + '}}';
       };
 
       $scope.nameKey = function (gender) {
