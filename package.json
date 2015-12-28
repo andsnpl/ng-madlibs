@@ -1,6 +1,6 @@
 {
   "name": "ng-madlibs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Angular Mad Libs exercise",
   "main": "src/js/index.js",
   "scripts": {
