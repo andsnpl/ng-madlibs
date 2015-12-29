@@ -6,14 +6,18 @@ angular.module('ng-madlibs')
   .controller('madlibs', [
     '$scope',
     function ($scope) {
-      $scope.gender = 'F';
-
       $scope.spaceify = function (snakeCaseName) {
         return snakeCaseName.replace(/_/g, ' ');
       };
 
       $scope.ml = function (blankName) {
-        return this[blankName] || '{{' + this.spaceify(blankName) + '}}';
+        return this.blanks[blankName] || '{{' + this.spaceify(blankName) + '}}';
+      };
+
+      $scope.reset = function () {
+        this.blanks = {};
+        this.prefs = {gender: 'O'};
+        [].forEach.call(arguments, (form) => { form.$setPristine(); });
       };
 
       $scope.nameKey = function (gender) {
@@ -51,4 +55,6 @@ angular.module('ng-madlibs')
           // gender === 'O' ?
             'their';
       };
+
+      $scope.reset();
     }]);
