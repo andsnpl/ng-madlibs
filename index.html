@@ -106,7 +106,7 @@
         loved <span class="madlib">{{ml('dirty_task')}}</span> but did it
         <span class="madlib">{{ml('huge_number') | number}}</span> times faster.
       </p>
-      <button ng-click="wordselect.$setPristine(); blanks = {}">
+      <button ng-click="reset(wordselect, genderselect)">
         Start Over
       </button>
     </article>
