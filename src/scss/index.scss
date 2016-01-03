@@ -2,6 +2,7 @@ body {
   max-width: 40rem;
   margin: 0 auto;
   padding: 1rem;
+  position: relative;
 }
 
 .topheader {
@@ -88,12 +89,85 @@ body {
   }
 }
 
-.madlibs {
+.wordselect-footer {
+  text-align: right;
+  margin-top: 1.5rem;
+  margin-left: -5px;
+  padding-top: 1.5rem;
+  padding-right: 5px;
+  border-top: 1px solid black;
+}
+
+input[type=submit],
+input[type=button] {
+  border: 1px solid black;
+  font-size: 1rem;
+  background-color: white;
+  transition: background-color .25s;
+  padding: .6rem;
+
+  &:hover {
+    background-color: #cacaca;
+  }
+}
+
+.madlibs-story {
   padding: 3rem;
   border: 1px solid black;
   font-size: 1.3rem;
+
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
 }
 
 .madlib {
   text-decoration: underline;
+}
+
+.resetbutton {
+  display: block;
+  float: right;
+}
+
+// Transitions on form sumbit
+
+.input.ng-hide-add,
+.input.ng-hide-remove,
+.madlibs.ng-hide-add,
+.madlibs.ng-hide-remove {
+  transition: opacity 0.5s, height 0.25s;
+  overflow: hidden;
+}
+
+.input.ng-hide-add,
+.madlibs.ng-hide-add {
+  // setup hiding transition in this state
+  transition-timing-function: linear, ease-in;
+  transition-delay: 0s, 0.25s;
+  opacity: 1;
+  height: 25rem;
+
+  // move to this state when hiding transition is active
+  &.ng-hide-add-active,
+  &.ng-hide-add-active {
+    opacity: 0;
+    height: 0;
+  }
+}
+
+// setup showing transition in this state
+.input.ng-hide-remove,
+.madlibs.ng-hide-remove {
+  transition-timing-function: linear, ease-out;
+  transition-delay: 0s, 0.75s;
+  height: 0;
+
+  // move to this state when showing transition is active
+  &.ng-hide-remove-active,
+  &.ng-hide-remove-active {
+    height: 25rem;
+  }
 }
