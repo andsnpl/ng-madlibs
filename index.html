@@ -27,89 +27,95 @@
     </div>
   </header>
   <main id="madlibs" ng-controller="madlibs">
-    <form class="genderselect" name="genderselect"
-          ng-show="!wordselect.$submitted || wordselect.$invalid">
-      <h2>Should this story be about a man or a woman?</h2>
-      <ul class="genderlist">
-        <li class="genderoption">
-          <input type="radio" id="madlibs-gender-m" ng-model="prefs.gender"
-                 name="gender" value="M">
-          <label for="madlibs-gender-m">Man</label>
-        </li><!--
-     --><li class="genderoption">
-          <input type="radio" id="madlibs-gender-f" ng-model="prefs.gender"
-                 name="gender" value="F">
-          <label for="madlibs-gender-f">Woman</label>
-        </li><!--
-     --><li class="genderoption">
-          <input type="radio" id="madlibs-gender-o" ng-model="prefs.gender"
-                 name="gender" value="O">
-          <label for="madlibs-gender-o">No gender</label>
-        </li>
-      </ul>
-    </form>
-    <form class="wordselect" name="wordselect"
-          ng-show="!wordselect.$submitted || wordselect.$invalid">
-      <h2>Provide the following words:</h2>
-      <div class="wordselect-column">
-        <input required type="text" ng-model="blanks[nameKey(prefs.gender)]"
-               placeholder="{{spaceify(nameKey(prefs.gender))}}">
-        <input required type="text" ng-model="blanks.job_title"
-               placeholder="job title">
-        <input required type="text" ng-model="blanks.tedious_task"
-               placeholder="tedious task">
-      </div><!--
-   --><div class="wordselect-column">
-        <input required type="text" ng-model="blanks.dirty_task"
-               placeholder="dirty task">
-        <input required type="text" ng-model="blanks.celebrity"
-               placeholder="celebrity">
-        <input required type="text" ng-model="blanks.useless_skill"
-               placeholder="useless skill">
-      </div><!--
-   --><div class="wordselect-column">
-        <input required type="text" ng-model="blanks.obnoxious_celebrity"
-               placeholder="obnoxious celebrity">
-        <input required type="number" min="1000" ng-model="blanks.huge_number"
-               placeholder="huge number">
-        <input required type="text" ng-model="blanks.adjective"
-               placeholder="adjective">
-      </div>
-      <footer class="wordselect-footer">
-        <input type="submit" value="Generate My MadLib">
-      </footer>
-    </form>
-    <article class="madlibs"
-             ng-show="wordselect.$submitted && wordselect.$valid">
-      <p>
-        <span class="madlib">{{ml(nameKey(prefs.gender))}}</span> was a
-        <span class="madlib">{{ml('job_title')}}</span> who loved technology.
-        Although {{pron_2s_subjective(prefs.gender)}} loved parts of
-        {{pron_2s_genetive(prefs.gender)}} job,
-        {{pron_2s_subjective(prefs.gender)}} absolutely hated
-        <span class="madlib">{{ml('tedious_task')}}</span> and
-        <span class="madlib">{{ml('dirty_task')}}</span>. So,
-        <span class="madlib">{{ml(nameKey(prefs.gender))}}</span> met with
-        {{pron_2s_genetive(prefs.gender)}} life mentor,
-        <span class="madlib">{{ml('celebrity')}}</span>,
-        who told {{pron_2s_objective(prefs.gender)}} to learn
-        <span class="madlib">{{ml('useless_skill')}}</span> with Thinkful.
-        Thinkful didn't offer a course on
-        <span class="madlib">{{ml('useless_skill')}}</span>, so
-        {{pron_2s_subjective(prefs.gender)}} studied programming instead.
-      </p>
-      <p>
-        What a great decision! With {{pron_2s_genetive(prefs.gender)}} new
-        skills, <span class="madlib">{{ml(nameKey(prefs.gender))}}</span> built
-        a(n) <span class="madlib">{{ml('adjective')}}</span> robot named
-        <span class="madlib">{{ml('obnoxious_celebrity')}}</span> that not only
-        loved <span class="madlib">{{ml('dirty_task')}}</span> but did it
-        <span class="madlib">{{ml('huge_number') | number}}</span> times faster.
-      </p>
-      <button ng-click="reset(wordselect, genderselect)">
-        Start Over
-      </button>
-    </article>
+    <section class="input"
+             ng-show="!inputform.$submitted || inputform.$invalid">
+      <form class="inputform" name="inputform">
+        <div ng-form class="genderselect" name="genderselect">
+          <h2>Should this story be about a man or a woman?</h2>
+          <ul class="genderlist">
+            <li class="genderoption">
+              <input type="radio" id="madlibs-gender-m"
+                     ng-model="prefs.gender" name="gender" value="M">
+              <label for="madlibs-gender-m">Man</label>
+            </li><!--
+         --><li class="genderoption">
+              <input type="radio" id="madlibs-gender-f"
+                     ng-model="prefs.gender" name="gender" value="F">
+              <label for="madlibs-gender-f">Woman</label>
+            </li><!--
+         --><li class="genderoption">
+              <input type="radio" id="madlibs-gender-o"
+                     ng-model="prefs.gender" name="gender" value="O">
+              <label for="madlibs-gender-o">No gender</label>
+            </li>
+          </ul>
+        </div>
+        <div ng-form class="wordselect" name="wordselect">
+          <h2>Provide the following words:</h2>
+          <div class="wordselect-column">
+            <input required type="text"
+                   ng-model="blanks[nameKey(prefs.gender)]"
+                   placeholder="{{spaceify(nameKey(prefs.gender))}}">
+            <input required type="text" ng-model="blanks.job_title"
+                   placeholder="job title">
+            <input required type="text" ng-model="blanks.tedious_task"
+                   placeholder="tedious task">
+          </div><!--
+       --><div class="wordselect-column">
+            <input required type="text" ng-model="blanks.dirty_task"
+                   placeholder="dirty task">
+            <input required type="text" ng-model="blanks.celebrity"
+                   placeholder="celebrity">
+            <input required type="text" ng-model="blanks.useless_skill"
+                   placeholder="useless skill">
+          </div><!--
+       --><div class="wordselect-column">
+            <input required type="text" ng-model="blanks.obnoxious_celebrity"
+                   placeholder="obnoxious celebrity">
+            <input required type="number" min="1000"
+                   ng-model="blanks.huge_number" placeholder="huge number">
+            <input required type="text" ng-model="blanks.adjective"
+                   placeholder="adjective">
+          </div>
+          <footer class="wordselect-footer">
+            <input type="submit" value="Generate My MadLib">
+          </footer>
+        </div>
+      </form>
+    </section>
+    <section class="madlibs"
+             ng-show="inputform.$submitted && inputform.$valid">
+      <article class="madlibs-story">
+        <p>
+          <span class="madlib">{{ml(nameKey(prefs.gender))}}</span> was a
+          <span class="madlib">{{ml('job_title')}}</span> who loved technology.
+          Although {{pron_2s_subjective(prefs.gender)}} loved parts of
+          {{pron_2s_genetive(prefs.gender)}} job,
+          {{pron_2s_subjective(prefs.gender)}} absolutely hated
+          <span class="madlib">{{ml('tedious_task')}}</span> and
+          <span class="madlib">{{ml('dirty_task')}}</span>. So,
+          <span class="madlib">{{ml(nameKey(prefs.gender))}}</span> met with
+          {{pron_2s_genetive(prefs.gender)}} life mentor,
+          <span class="madlib">{{ml('celebrity')}}</span>,
+          who told {{pron_2s_objective(prefs.gender)}} to learn
+          <span class="madlib">{{ml('useless_skill')}}</span> with Thinkful.
+          Thinkful didn't offer a course on
+          <span class="madlib">{{ml('useless_skill')}}</span>, so
+          {{pron_2s_subjective(prefs.gender)}} studied programming instead.
+        </p>
+        <p>
+          What a great decision! With {{pron_2s_genetive(prefs.gender)}} new
+          skills, <span class="madlib">{{ml(nameKey(prefs.gender))}}</span>
+          built a(n) <span class="madlib">{{ml('adjective')}}</span> robot
+          named <span class="madlib">{{ml('obnoxious_celebrity')}}</span> that
+          not only loved <span class="madlib">{{ml('dirty_task')}}</span> but
+          did it <span class="madlib">{{ml('huge_number') | number}}</span>
+          times faster.
+        </p>
+        <input type="button" class="resetbutton" value="Start Over"
+               ng-click="reset(inputform)">
+      </article>
+    </section>
   </main>
   <script type="text/javascript" src="js/index.js"></script>
 </body>

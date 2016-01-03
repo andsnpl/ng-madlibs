@@ -1,11 +1,21 @@
-'use strict';
-
 import angular from 'angular';
 
 angular.module('ng-madlibs')
+//  .animation('.ng-hide', function () {
+//    return {
+//      addClass: function (element, className, doneFn) {
+//        $(element).animate({ height: 0, opacity: 0 }, 500, 'linear', doneFn);
+//      },
+//      removeClass: function (element, className, doneFn) {
+//        $(element).animate({ height: 384, opacity: 1 }, 500, 'linear', doneFn)
+//      }
+//    };
+//  })
   .controller('madlibs', [
-    '$scope',
-    function ($scope) {
+    '$scope', '$timeout',
+    function ($scope, $timeout) {
+      $scope.blanks = {};
+
       $scope.spaceify = function (snakeCaseName) {
         return snakeCaseName.replace(/_/g, ' ');
       };
@@ -15,8 +25,9 @@ angular.module('ng-madlibs')
       };
 
       $scope.reset = function () {
-        this.blanks = {};
-        this.prefs = {gender: 'O'};
+        // delay until story is hidden
+        $timeout(() => { this.blanks = {}; }, 500);
+        this.prefs = { gender: 'O' };
         [].forEach.call(arguments, (form) => { form.$setPristine(); });
       };
 
